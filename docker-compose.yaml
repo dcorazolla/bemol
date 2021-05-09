@@ -2,15 +2,26 @@ version: "3.7"
 services:
 # container backend da aplicação
   backend:
+    container_name: bemol_back
     build:
       context: .
       dockerfile: back.Dockerfile
-    container_name: backend
     volumes:
       - ./back:/var/www/html
     ports: 
       - 8080:80
     networks:
+      - net-bemol
+
+  banco:
+    container_name: bemol_banco
+    image: mysql:5.6
+    volumes:
+      - db-mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=bemol
+    networks: 
       - net-bemol
 
   # composer:
@@ -23,3 +34,6 @@ services:
 networks:
   net-bemol:
     driver: bridge
+
+volumes:
+  db-mysql:
