@@ -27,14 +27,17 @@ Route::middleware("api")
         
         Route::middleware("auth:api")
         ->group(function(){
-            
+
             Route::post('/logout', [AuthController::class, 'logout']);
             Route::post('/refresh', [AuthController::class, 'refresh']);
 
-            Route::get("/user", [UserController::class, 'list']);
-            Route::post('/user', [UserController::class, 'register']);
+            // Route::resource('user', UserController::class);
+
+            Route::get("/user", [UserController::class, 'index']);
+            Route::get("/user/{id}", [UserController::class, 'show']);
+            Route::post('/user', [UserController::class, 'store']);
             Route::put('/user', [UserController::class, 'update']);
-            Route::delete('/user/{$user_id}', [UserController::class, 'delete']);
+            Route::delete('/user/{id}', [UserController::class, 'destroy']);
 
         });
 
