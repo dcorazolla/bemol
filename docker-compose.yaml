@@ -1,0 +1,25 @@
+version: "3.7"
+services:
+# container backend da aplicação
+  backend:
+    build:
+      context: .
+      dockerfile: back.Dockerfile
+    container_name: backend
+    volumes:
+      - ./back:/var/www/html
+    ports: 
+      - 8080:80
+    networks:
+      - net-bemol
+
+  # composer:
+  #   restart: 'no'
+  #   image: composer/composer
+  #   command: install
+  #   volumes:
+  #     - ./back:/app
+
+networks:
+  net-bemol:
+    driver: bridge
