@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,8 +20,22 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-// Route::group(function(){
+Route::middleware("api")
+    ->group(function($router){
 
-//     Route::post();
+        Route::post('/login', [AuthController::class, 'login']);
+        
+        Route::middleware("auth:api")
+        ->group(function(){
+            
+            Route::post('/logout', [AuthController::class, 'logout']);
+            Route::post('/refresh', [AuthController::class, 'refresh']);
 
-// });
+            Route::get("/user", [UserController::class, 'list']);
+            Route::post('/user', [UserController::class, 'register']);
+            Route::put('/user', [UserController::class, 'update']);
+            Route::delete('/user/{$user_id}', [UserController::class, 'delete']);
+
+        });
+
+});
