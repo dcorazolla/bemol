@@ -1,7 +1,7 @@
 version: "3.7"
 services:
 # container backend da aplicação
-  backend:
+  bemol_back:
     container_name: bemol_back
     build:
       context: .
@@ -13,7 +13,7 @@ services:
     networks:
       - net-bemol
 
-  banco:
+  bemol_banco:
     container_name: bemol_banco
     image: mysql:5.6
     volumes:
@@ -24,24 +24,15 @@ services:
     networks: 
       - net-bemol
 
-  frontend:
+  bemol_front:
     container_name: bemol_front
     build:
       context: .
       dockerfile: front.Dockerfile
-    # volumes:
-      # - ./back:/var/www/html
     ports: 
       - 8081:80
     networks:
       - net-bemol
-
-  # composer:
-  #   restart: 'no'
-  #   image: composer/composer
-  #   command: install
-  #   volumes:
-  #     - ./back:/app
 
 networks:
   net-bemol:

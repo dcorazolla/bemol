@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Link, Route, Switch } from "react-router-dom";
 import AddUser from "../../components/AddUser";
 import ListUser from "../../components/ListUser";
+import User from "../../components/User";
 
 class App extends Component {
   render() {
@@ -24,9 +25,9 @@ class App extends Component {
 
         <div className="container mt-3">
           <Switch>
-            <Route exact path="/user" component={ListUser} />
+            <Route exact path={["/user", "/user/list"]} component={ListUser} />
             <Route exact path="/user/add" component={AddUser} />
-            {/* <Route path="/tutorials/:id" component={Tutorial} /> */}
+            <Route path="/user/edit/:id" component={User} />
           </Switch>
         </div>
       </div>

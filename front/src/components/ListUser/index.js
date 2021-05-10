@@ -5,12 +5,9 @@ import { Link } from "react-router-dom";
 export default class ListUser extends Component {
   constructor(props) {
     super(props);
-    // this.onChangeSearchTitle = this.onChangeSearchTitle.bind(this);
-    // this.retrieveTutorials = this.retrieveTutorials.bind(this);
-    // this.refreshList = this.refreshList.bind(this);
-    // this.setActiveTutorial = this.setActiveTutorial.bind(this);
-    // this.removeAllTutorials = this.removeAllTutorials.bind(this);
-    // this.searchTitle = this.searchTitle.bind(this);
+    this.retrieveUsers = this.retrieveUsers.bind(this);
+    this.setActiveUser = this.setActiveUser.bind(this);
+    this.refreshList = this.refreshList.bind(this);
 
     this.state = {
       users: [],
@@ -22,14 +19,6 @@ export default class ListUser extends Component {
   componentDidMount() {
     this.retrieveUsers();
   }
-
-//   onChangeSearchTitle(e) {
-//     const searchTitle = e.target.value;
-
-//     this.setState({
-//       searchTitle: searchTitle
-//     });
-//   }
 
   retrieveUsers() {
     UserDataService.getAll()
@@ -44,13 +33,13 @@ export default class ListUser extends Component {
       });
   }
 
-//   refreshList() {
-//     this.retrieveTutorials();
-//     this.setState({
-//       currentTutorial: null,
-//       currentIndex: -1
-//     });
-//   }
+  refreshList() {
+    this.retrieveUsers();
+    this.setState({
+      currentUser: null,
+      currentIndex: -1
+    });
+  }
 
   setActiveUser(user, index) {
     this.setState({
@@ -58,30 +47,6 @@ export default class ListUser extends Component {
       currentIndex: index
     });
   }
-
-//   removeAllTutorials() {
-//     TutorialDataService.deleteAll()
-//       .then(response => {
-//         console.log(response.data);
-//         this.refreshList();
-//       })
-//       .catch(e => {
-//         console.log(e);
-//       });
-//   }
-
-//   searchTitle() {
-//     TutorialDataService.findByTitle(this.state.searchTitle)
-//       .then(response => {
-//         this.setState({
-//           tutorials: response.data
-//         });
-//         console.log(response.data);
-//       })
-//       .catch(e => {
-//         console.log(e);
-//       });
-//   }
 
   render() {
     const { users, currentUser, currentIndex } = this.state;
@@ -107,12 +72,80 @@ export default class ListUser extends Component {
             </ul>
           </div>
           <div className="col-md-6">
-            {currentUser ? (
-                <p>aa</p>
+              {currentUser ? (
+                <div>
+                  <h4>Usuário</h4>
+                  <div>
+                    <label>
+                      <strong>Nome:</strong>
+                    </label>{" "}
+                    {currentUser.name}
+                  </div>
+                  <div>
+                    <label>
+                      <strong>Email:</strong>
+                    </label>{" "}
+                    {currentUser.email}
+                  </div>
+                  <div>
+                    <label>
+                      <strong>Celular:</strong>
+                    </label>{" "}
+                    {currentUser.cellphone}
+                  </div>
+                  <div>
+                    <label>
+                      <strong>Fone:</strong>
+                    </label>{" "}
+                    {currentUser.phone}
+                  </div>
+                  <div>
+                    <label>
+                      <strong>Instagram:</strong>
+                    </label>{" "}
+                    {currentUser.instaaccount}
+                  </div>
+                  <div>
+                    <label>
+                      <strong>Facebook:</strong>
+                    </label>{" "}
+                    {currentUser.faceaccount}
+                  </div>
+                  <div>
+                    <label>
+                      <strong>CEP:</strong>
+                    </label>{" "}
+                    {currentUser.cep}
+                  </div>
+                  <div>
+                    <label>
+                      <strong>Endereço:</strong>
+                    </label>{" "}
+                    {currentUser.endereco}
+                  </div>
+                  <div>
+                    <label>
+                      <strong>Cidade:</strong>
+                    </label>{" "}
+                    {currentUser.cidade}
+                  </div>
+                  <div>
+                    <label>
+                      <strong>UF:</strong>
+                    </label>{" "}
+                    {currentUser.uf}
+                  </div>
+                  <Link
+                    to={"/user/edit/" + currentUser.id}
+                    className="button button-warning"
+                  >
+                  Editar
+                  </Link>
+                </div>
             ) : (
                 <div>
                   <br />
-                  <p>Selecione um usuário ao lado para editar</p>
+                  <p>Selecione um usuário ao lado para detalhes</p>
                 </div>
             )}
           </div>
