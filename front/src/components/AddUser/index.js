@@ -169,6 +169,8 @@ export default class AddUser extends Component {
 
   saveUser() {
 
+    this.podeEnviar();
+
     const { podeenviar } = this.state;
 
     if (podeenviar) {
@@ -205,6 +207,7 @@ export default class AddUser extends Component {
                   submitted: true
               });
               console.log(response.data);
+              this.props.history.push('/user');
             })
             .catch(e => {
               console.log(e);

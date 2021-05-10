@@ -288,6 +288,8 @@ export default class User extends Component {
   }
 
   updateUser() {
+    this.podeEnviar();
+
     const { podeenviar } = this.state;
 
     if (podeenviar) {
@@ -300,6 +302,7 @@ export default class User extends Component {
             this.setState({
               message: "Usuário alterado com sucesso"
             });
+            this.props.history.push('/user');
           })
           .catch(e => {
             console.log(e);
