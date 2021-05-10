@@ -1,0 +1,4 @@
+vendor
+storage/app
+storage/framework
+storage/logs

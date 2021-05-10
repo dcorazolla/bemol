@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: back.Dockerfile
     volumes:
-      - ./back:/var/www/html
+      - php-data:/var/www/html
     ports: 
       - 8080:80
     networks:
@@ -49,3 +49,4 @@ networks:
 
 volumes:
   db-mysql:
+  php-data:

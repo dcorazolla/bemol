@@ -57,7 +57,7 @@ Realiza o controle de acesso, permitindo acesso livre apenas à tela de login. D
 > 2. Instale as dependências  
    `# composer install`
 > 3. Rode o migrate e seed do banco de dados  
-   `# php artisan migrate --seed`
+   `# php artisan migrate:fresh --seed`
 > 4. Saia do container  
    `# exit`
 6. Acesse o Front da aplicação através do navegador de internet em *https://localhost:8081*
