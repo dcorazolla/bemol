@@ -24,6 +24,18 @@ services:
     networks: 
       - net-bemol
 
+  frontend:
+    container_name: bemol_front
+    build:
+      context: .
+      dockerfile: front.Dockerfile
+    # volumes:
+      # - ./back:/var/www/html
+    ports: 
+      - 8081:80
+    networks:
+      - net-bemol
+
   # composer:
   #   restart: 'no'
   #   image: composer/composer

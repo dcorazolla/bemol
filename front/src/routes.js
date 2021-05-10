@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { isAuthenticated } from "./services/auth";
 
 import Login from "./pages/Login";
+import User from "./pages/User";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -23,7 +24,7 @@ const Routes = () => (
     <Switch>
       <Route exact path="/" component={Login} />
       {/* <Route path="/signup" component={() => <h1>SignUp</h1>} /> */}
-      <PrivateRoute path="/app" component={() => <h1>App</h1>} />
+      <PrivateRoute path="/user" component={User} />
       <Route path="*" component={() => <h1>Page not found</h1>} />
     </Switch>
   </BrowserRouter>

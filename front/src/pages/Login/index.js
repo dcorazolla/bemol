@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 import Logo from "../../assets/bemol-digital-inline-colorful.svg";
 import api from "../../services/api";
@@ -21,8 +21,8 @@ class Login extends Component {
     } else {
       try {
         const response = await api.post("/login", { email, password });
-        login(response.data.token);
-        this.props.history.push("/app");
+        login(response.data.access_token);
+        this.props.history.push("/user");
       } catch (err) {
         this.setState({
           error:

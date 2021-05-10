@@ -14,9 +14,9 @@ class UserController extends Controller
     /**
      * Exibe lista de usuarios
      */
-    public function index()
+    public function index(Request $request)
     {
-        $usuarios = User::orderBy("name")->get();
+        $usuarios = User::orderBy("name")->paginate(5);
  
         return response()->json([
             "success" => true,
