@@ -1,0 +1,21 @@
+1. A solução deve ser disponibilizada em Cloud ou On-premise? 
+
+>> A solução deve ser disponibilizada em cloud, para não precisar montar infraestrutura tecnológica localmente. E facilitar o processo de deploy com um orquestrador de containers.
+
+2. Considerando a participação de 4 pessoas técnicas para o desenvolvimento dessa solução, responda qual ferramenta acreditas ser apropriada para o controle de tarefas da equipe, a ferramenta é ágil? 
+
+>> Para o controle de tarefas da equipe podemos utilizar o Jira. É uma ferrmenta ágil.
+
+3. Você se sente capaz de liderar esta equipe? Por quê? 
+
+>> Sim. Porque gosto de ajudar integrantes do time, tenho experiência, paciência e conhecimento em algumas tecnologias. Gosto de aprender.
+
+4. Se pudesse sugerir uma melhoria, mudança ou oportunidade. O que seria? 
+
+>> Aumentar o tempo de entrega do desafio.
+
+5. Acha válido esse desafio para o processo que está participando?
+
+>> Acho válido o desafio, faz pensa fora da caixa, trazendo conceitos (pelo menos para mim) novos como comunicação omnichannel e c4model.
+Fez com que em passasse quase metade do tempo do desafio estudando os conceitos.
+Foquei no desenvolvimento do backend.
