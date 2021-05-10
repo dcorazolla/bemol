@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $usuarios = User::orderBy("name")->paginate(5);
+        $usuarios = User::orderBy("name")->get();
  
         return response()->json([
             "success" => true,
@@ -54,6 +54,7 @@ class UserController extends Controller
             'name' => 'required|string|between:2,100',
             'email' => 'required|string|email|max:100|unique:users',
             'password' => 'required|string|min:6',
+            'cep' => 'required|string|min:8',
         ]);
 
         if($validator->fails()){
@@ -69,6 +70,10 @@ class UserController extends Controller
         if ($request->instaaccount!=null) $usuario->instaaccount = $request->instaaccount;
         if ($request->faceaccount!=null) $usuario->faceaccount = $request->faceaccount;
         if ($request->twitteraccount!=null) $usuario->twitteraccount = $request->twitteraccount;
+        $usuario->cep = $input['cep'];
+        if ($request->endereco!=null) $usuario->endereco = $request->endereco;
+        if ($request->cidade!=null) $usuario->cidade = $request->cidade;
+        if ($request->uf!=null) $usuario->uf = $request->uf;
         $usuario->save();
 
         return response()->json([
@@ -109,6 +114,10 @@ class UserController extends Controller
         if (isset($input["instaaccount"]) && !empty($input["instaaccount"])) $usuario->instaaccount = $input["instaaccount"];
         if (isset($input["faceaccount"]) && !empty($input["faceaccount"])) $usuario->faceaccount = $input["faceaccount"];
         if (isset($input["twitteraccount"]) && !empty($input["twitteraccount"])) $usuario->twitteraccount = $input["twitteraccount"];
+        $usuario->cep = $input["cep"];
+        if (isset($input["endereco"]) && !empty($input["endereco"])) $usuario->endereco = $input["endereco"];
+        if (isset($input["cidade"]) && !empty($input["cidade"])) $usuario->cidade = $input["cidade"];
+        if (isset($input["uf"]) && !empty($input["uf"])) $usuario->uf = $input["uf"];
         $usuario->save();
 
         return response()->json([

@@ -26,7 +26,11 @@ class User extends Authenticatable implements JWTSubject
         'phone',
         'instaaccount',
         'faceaccount',
-        'twitteraccount'
+        'twitteraccount',
+        'cep',
+        'endereco',
+        'cidade',
+        'uf'
     ];
 
     /**

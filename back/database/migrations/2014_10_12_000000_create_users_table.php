@@ -23,7 +23,10 @@ class CreateUsersTable extends Migration
             $table->string('phone')->nullable();
             $table->string('instaaccount')->nullable();
             $table->string('faceaccount')->nullable();
-            $table->string('twitteraccount')->nullable();
+            $table->string('cep')->nullable();
+            $table->string('endereco')->nullable();
+            $table->string('cidade')->nullable();
+            $table->string('uf')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
